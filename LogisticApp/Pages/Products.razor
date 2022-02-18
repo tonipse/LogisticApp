@@ -1,0 +1,44 @@
+﻿@page "/products"
+@using LogisticApp.Data
+@inject ProductService productService
+<h3>Products</h3>
+
+@if (allProducts == null)
+{
+    <p>Loading Data...</p>
+}
+else
+{
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            @foreach (Product product in allProducts)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    List<Product> allProducts;
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        allProducts = await productService.GetAllProducts();
+    }
+
+
+}
