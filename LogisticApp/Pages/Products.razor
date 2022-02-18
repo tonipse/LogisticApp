@@ -3,6 +3,8 @@
 @inject ProductService productService
 <h3>Products</h3>
 
+<a href="AddProduct" class="btn btn-primary my-2">+ Product</a>
+
 @if (allProducts == null)
 {
     <p>Loading Data...</p>
@@ -16,6 +18,7 @@ else
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -26,13 +29,17 @@ else
                 <tr>
                     <td>@product.Id</td>
                     <td>@product.Name</td>
+                    <td>
+                        <button type="button" class="btn-sm btn-secondary" href="EditProduct">Edit</button>
+                        <button type="button" class="btn-sm btn-danger" href="DeleteProduct">Delete</button>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
 @code {
-    List<Product> allProducts;
+    List<Product>? allProducts;
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
