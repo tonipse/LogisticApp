@@ -30,8 +30,8 @@ else
                     <td>@product.Id</td>
                     <td>@product.Name</td>
                     <td>
-                        <button type="button" class="btn-sm btn-secondary" href="EditProduct">Edit</button>
-                        <button type="button" class="btn-sm btn-danger" href="DeleteProduct">Delete</button>
+                        <a class="btn btn-sm btn-secondary" href="EditProduct/@product.Id">Edit</a>
+                        <a class="btn btn-sm btn-danger" href="DeleteProduct/@product.Id">Delete</a>
                     </td>
                 </tr>
             }

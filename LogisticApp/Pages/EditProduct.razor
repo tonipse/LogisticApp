@@ -1,0 +1,25 @@
+﻿@page "/editProduct/{id}"
+@using LogisticApp.Data
+@inject ProductService productService
+@inject NavigationManager navigationManager
+
+<h3>EditProduct</h3>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    Product product = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        product = await productService.GetProduct(Convert.ToInt32(Id));
+    }
+    void Cancel()
+    {
+        navigationManager.NavigateTo("Products");
+    }
+
+}
